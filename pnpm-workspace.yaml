@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - cypress
+  - esbuild
+  - mozjpeg
+  - pngquant-bin

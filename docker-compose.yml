@@ -1,0 +1,42 @@
+# docker-compose.prod.yml
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: e-carbon-postgres-prod
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+      - ./server/database/migrations:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U anamnesis]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  app:
+    container_name: e-carbon-app-prod
+    build:
+      context: .
+      dockerfile: .docker/node/Dockerfile
+    image: e-carbon:prod
+    restart: unless-stopped
+    ports:
+      - '5174:5174'
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: 5174
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data_prod:

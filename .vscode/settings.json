@@ -1,0 +1,31 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package*, yarn*, pnpm*, tsconfig*, vite*, eslint*, .git*, .style*, tailwind*, components*, .editor*, docker*, .env*, .docker*, cypress*, sonar*, .sonar*"
+  },
+  "files.exclude": {
+    ".vscode": false,
+    "dist": false,
+    "node_modules": false,
+    "server-dist": false
+  },
+  "files.eol": "\n",
+  "eslint.ignoreUntitled": true,
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.js"
+  },
+  "[html]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "never"
+    }
+  },
+  "files.associations": {
+    "docs/files/**/*.html": "html"
+  },
+  "html.validate.scripts": false,
+  "html.validate.styles": false
+}

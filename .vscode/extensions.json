@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "deque-systems.vscode-axe-linter",
+    "usernamehw.errorlens",
+    "dbaeumer.vscode-eslint",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "nhoizey.gremlins",
+    "yoavbls.pretty-ts-errors",
+    "natqe.reload",
+    "medo64.render-crlf",
+    "sonarsource.sonarlint-vscode",
+    "shardulm94.trailing-spaces",
+    "celianriboulet.webvalidator",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "alefragnani.read-only-indicator",
+    "editorconfig.editorconfig"
+  ]
+}

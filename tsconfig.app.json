@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    // ============================================================
+    // COMPILATION TARGET & LANGUAGE
+    // ============================================================
+    "target": "ES2020", // Compile para ES2020 (suporte moderno)
+    "jsx": "react-jsx", // JSX moderno do React 17+ (sem React import)
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // Bibliotecas de tipos disponíveis
+    "moduleDetection": "force", // Força detecção de módulos
+    "useDefineForClassFields": true, // Comportamento padrão de class fields
+
+    // ============================================================
+    // MODULE RESOLUTION
+    // ============================================================
+    "baseUrl": ".", // Raiz para resolução de paths
+    "module": "ESNext", // Sistema de módulos ES (import/export)
+    "moduleResolution": "bundler", // Resolução otimizada para bundlers (Vite)
+    "paths": { "@/*": ["./src/*"] }, // Alias @ para pasta src
+
+    // ============================================================
+    // TYPE CHECKING
+    // ============================================================
+    "allowImportingTsExtensions": true, // Permite imports com extensão .ts/.tsx
+    "strict": true, // Ativa todas checagens estritas
+    "noFallthroughCasesInSwitch": true, // Erro em switch sem break
+    "noUnusedLocals": true, // Erro em variáveis locais não usadas
+    "noUnusedParameters": true, // Erro em parâmetros não usados
+
+    // ============================================================
+    // EMIT & OUTPUT
+    // ============================================================
+    "noEmit": true, // Não gera arquivos JS (Vite faz isso)
+    "sourceMap": true, // Gera source maps para debug
+    "isolatedModules": true, // Cada arquivo é módulo isolado (necessário para Vite)
+    "skipLibCheck": true // Pula checagem de arquivos .d.ts (performance)
+  },
+
+  // ============================================================
+  // FILES & FOLDERS
+  // ============================================================
+  "include": [
+    "src", // Todo código frontend
+    "vite.config.ts" // Configuração do Vite
+  ],
+  "exclude": [
+    "server", // Código backend (tem seu próprio tsconfig)
+    "server-dist", // Build do servidor
+    "dist", // Build do frontend
+    "node_modules" // Dependências
+  ]
+}

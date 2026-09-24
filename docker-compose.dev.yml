@@ -1,0 +1,63 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: e-carbon-postgres-dev
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+      - ./server/database/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U anamnesis]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    image: node:20-alpine
+    container_name: e-carbon-api-dev
+    working_dir: /app
+    command: sh -c "corepack enable && pnpm i && pnpm dev:server"
+    ports:
+      - '5174:5174'
+    environment:
+      NODE_ENV: development
+      PORT: 5174
+      CHOKIDAR_USEPOLLING: '1'
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, sh, -c, 'curl -f http://localhost:5174/api/health || exit 1']
+      interval: 15s
+      timeout: 10s
+      retries: 3
+
+  client:
+    image: node:20-alpine
+    container_name: e-carbon-client-dev
+    working_dir: /app
+    command: sh -c "corepack enable && pnpm i && pnpm dev:client"
+    ports:
+      - '5173:5173'
+    environment:
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: '1'
+      VITE_API_URL_INTERNAL: 'http://api:5174'
+      VITE_API_URL: 'http://localhost:5174'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - api
+
+volumes:
+  postgres_data_dev:

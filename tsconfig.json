@@ -1,0 +1,19 @@
+{
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.server.json" }
+  ],
+  // ============================================================
+  // ROOT CONFIGURATION - Project References
+  // ============================================================
+  // Este é o tsconfig raiz que orquestra múltiplas configurações
+  // através do sistema de "project references" do TypeScript.
+  // Cada referência aponta para uma configuração específica:
+  // - tsconfig.app.json: Frontend (Vite + React)
+  // - tsconfig.node.json: Configuração do Vite
+  // - tsconfig.server.json: Backend (Express + Node.js)
+  // ============================================================
+
+  "files": []
+}

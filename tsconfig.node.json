@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    // ============================================================
+    // COMPILATION TARGET & LANGUAGE
+    // ============================================================
+    "target": "ES2022", // Node.js moderno (v18+)
+    "jsx": "react-jsx", // JSX para React (Vite config pode usar JSX)
+    "lib": ["ES2023"], // Bibliotecas ES2023 disponíveis
+
+    // ============================================================
+    // MODULE RESOLUTION
+    // ============================================================
+    "baseUrl": ".", // Raiz para resolução de paths
+    "rootDir": ".", // Raiz dos arquivos fonte
+    "module": "NodeNext", // Sistema de módulos Node.js moderno
+    "moduleResolution": "NodeNext", // Resolução Node.js com ESM/CJS
+    "paths": {
+      "@/*": ["./src/*"], // Alias @ para pasta src
+      "@server/*": ["./server/*"] // Alias @server para pasta server
+    },
+
+    "resolveJsonModule": true, // Permite importar .json
+
+    // ============================================================
+    // TYPE CHECKING
+    // ============================================================
+    "strict": true, // Todas checagens estritas
+    "noUnusedLocals": false, // Permite variáveis locais não usadas
+    "noUnusedParameters": false, // Permite parâmetros não usados
+
+    // ============================================================
+    // EMIT & OUTPUT
+    // ============================================================
+    "outDir": "server-dist", // Pasta de saída
+    "sourceMap": false, // Não gera source maps
+    // ============================================================
+    // MODULE INTEROP
+    // ============================================================
+    "allowSyntheticDefaultImports": true, // Permite imports default sintéticos
+    "esModuleInterop": true, // Compatibilidade ESM/CommonJS
+    "skipLibCheck": true // Pula checagem de .d.ts (performance)
+  },
+
+  // ============================================================
+  // FILES & FOLDERS
+  // ============================================================
+  "include": [
+    "server/**/*", // Código do servidor
+    "src/utils/buildPdfPayload.ts", // Utilitário compartilhado
+    "src/pdf/**/*", // Templates PDF
+    "src/types/**/*", // Tipos compartilhados
+    "src/data/**/*" // Dados compartilhados
+  ],
+  "exclude": [
+    "node_modules", // Dependências
+    "dist", // Build do frontend
+    "server-dist" // Build do servidor
+  ]
+}

@@ -1,0 +1,5 @@
+# SonarQube Ignore
+
+docs/files/
+.env*
+**/.env*

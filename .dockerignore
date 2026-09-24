@@ -1,0 +1,10 @@
+node_modules
+dist
+server-dist
+.pnpm-store
+.git
+.gitignore
+.eslintcache
+.vscode
+*.log
+.DS_Store
