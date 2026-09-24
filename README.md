@@ -1,90 +1,116 @@
 # E-Carbon
 
-## Produção
+**E-Carbon** is a carbon emissions calculation system focused on the **patient journey**, designed to demonstrate the environmental impact of different healthcare approaches.
 
-- Requisitos: Docker
+The platform enables the analysis and comparison of carbon emissions generated throughout different stages of patient care, helping healthcare organizations better understand how clinical pathways, examinations, follow-up strategies, and hospitalizations can influence environmental sustainability.
 
-Como executar
+The project was developed within **SESI/SENAI**, two major Brazilian institutions that support the industrial sector through education, occupational health and safety, professional training, research, innovation, and technological development.
 
-1. Copiar `.env.production` e renomear para `.env`.
+**SESI (Industry Social Service)** works to promote the health, well-being, education, and quality of life of industrial workers and their communities, while **SENAI (National Industrial Apprenticeship Service)** is one of Brazil's leading institutions for professional and technological education, applied research, innovation, and technical solutions for industry.
 
-2. Para iniciar o serviço: `docker compose up -d --build`
+The project was **presented by SESI/SENAI at COP30**, highlighting the use of technology, healthcare data, and carbon-emissions analysis to support more sustainable healthcare practices.
+
+## Production
+
+### Requirements
+
+* Docker
+
+### How to Run
+
+1. Copy `.env.production` and rename it to `.env`.
+
+2. Start the service:
+
+```bash
+docker compose up -d --build
+```
 
 ---
 
-Comandos Úteis
+### Useful Commands
 
-1. Para apagar todos os serviços: `docker compose down`
-
-## Desenvolvimento
-
-Como Executar
+To stop and remove all services:
 
 ```bash
-# Instalar dependências
+docker compose down
+```
+
+## Development
+
+### How to Run
+
+```bash
+# Install dependencies
 pnpm install
 
-# Iniciar servidor de desenvolvimento
+# Start the development server
 pnpm dev
 
-# Build para produção
+# Build for production
 pnpm build
 ```
 
 ---
 
-## Resumo
+## Overview
 
-Sistema de cálculo de emissões de carbono na jornada do paciente, demonstrando o impacto ambiental de diferentes abordagens de cuidado médico.
+E-Carbon is a **carbon emissions calculation system for the patient journey**, designed to assess and demonstrate the environmental impact of different healthcare approaches.
 
-## Tecnologias
+The system analyzes emissions generated across different stages of patient care, allowing different care strategies to be compared and providing insights into how healthcare decisions can affect environmental sustainability.
 
-- **React 18** + **TypeScript**
-- **Vite** - Build tool
-- **TailwindCSS** - Estilização
-- **Radix UI** - Componentes acessíveis
-- **Context API** - Gerenciamento de estado
+By combining healthcare data with carbon emission calculations, the platform helps visualize the environmental consequences of different patient pathways and supports the development of more sustainable healthcare practices.
 
-## Impacto Ambiental
+The project was **presented by SESI/SENAI at COP30** as an initiative combining technology, healthcare, data analysis, and environmental sustainability.
 
-O sistema calcula emissões baseado em:
+## Technologies
 
-- Tipo de acompanhamento (sem/nenhum, anual, semestral)
-- Tipo de exame (convencional vs. point of care)
-- Condições médicas do paciente
-- Frequência de consultas
+* **React 18** + **TypeScript**
+* **Vite** - Build tool
+* **TailwindCSS** - Styling
+* **Radix UI** - Accessible UI components
+* **Context API** - State management
 
-Para entender como os cálculos funcionam, consulte a [documentação de regras de negócio](docs/files/Markdown/DOMAIN_RULES.md).
+## Environmental Impact
 
-## Objetivo
+The system calculates carbon emissions based on:
 
-Comparar as emissões de carbono entre:
+* Type of patient follow-up (none, annual, or semiannual)
+* Type of examination (conventional vs. point-of-care)
+* Patient medical conditions
+* Frequency of medical appointments
 
-- **Exames Convencionais** (laboratório tradicional, mais materiais)
-- **Exames Point of Care** (testes rápidos, menos materiais)
+To understand how the calculations work, see the [business rules documentation](docs/files/Markdown/DOMAIN_RULES.md).
 
-O sistema também avalia o impacto do acompanhamento preventivo regular versus internações hospitalares evitáveis.
+## Objective
 
-## Estrutura do Projeto
+The main objective is to compare carbon emissions between:
+
+* **Conventional Examinations** - Traditional laboratory testing, generally involving more materials and resources
+* **Point-of-Care Examinations** - Rapid tests performed closer to the patient, generally requiring fewer materials
+
+The system also evaluates the environmental impact of **regular preventive follow-up compared with potentially avoidable hospitalizations**, helping illustrate how different healthcare strategies can affect both patient care and carbon emissions.
+
+## Project Structure
 
 ```text
 src/
 ├── components/
-│   ├── patient/         # Componentes da jornada do paciente (4 steps)
-│   └── ui/              # Componentes reutilizáveis
+│   ├── patient/         # Patient journey components (4 steps)
+│   └── ui/              # Reusable UI components
 ├── context/             # Context API (Patient, Wizard, Language)
 ├── hooks/               # Custom hooks
-├── types/               # Definições TypeScript
-└── utils/               # Funções utilitárias
+├── types/               # TypeScript definitions
+└── utils/               # Utility functions
 ```
 
-## Documentação
+## Documentation
 
-- **[Regras de Negócio](docs/files/Markdown/DOMAIN_RULES.md)** - Documentação completa das regras de domínio, entidades, cálculos e decisões de arquitetura
-- **[Fatores de Insumos](docs/files/Markdown/FATORES_EMISSAO_INSUMOS.md)**
-- **[Cálculo de Carbono](docs/files/Markdown/CALCULO_CARBONO_CIS_MS.md)**
+* **[Business Rules](docs/files/Markdown/DOMAIN_RULES.md)** - Complete documentation covering domain rules, entities, calculations, and architectural decisions
+* **[Material Emission Factors](docs/files/Markdown/FATORES_EMISSAO_INSUMOS.md)**
+* **[Carbon Calculation](docs/files/Markdown/CALCULO_CARBONO_CIS_MS.md)**
 
 ---
 
-**Versão:** 1.0.0
-**Última atualização:** Novembro 2025
+**Version:** 1.0.0
+**Last Updated:** November 2025
